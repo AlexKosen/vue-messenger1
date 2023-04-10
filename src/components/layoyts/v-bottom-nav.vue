@@ -7,13 +7,13 @@ export default {
 <template>
     <div class="v-bottom-nav">
         <router-link :to="{name: 'contacts'}">
-            <i class="material-icons">rerson_pin</i>
+            <i class="material-icons">person_pin</i>
         </router-link>
         <router-link :to="{name: 'contacts'}">
             <i class="material-icons">chat</i>
         </router-link>
         <router-link :to="{name: 'contacts'}">
-            <i class="material-icons">setting</i>
+            <i class="material-icons">settings</i>
         </router-link>
         <router-link :to="{name: 'contacts'}">
             <i class="material-icons">call</i>
