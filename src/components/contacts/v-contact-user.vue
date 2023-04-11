@@ -29,6 +29,9 @@ export default {
         <div class="user__name">
             <span>{{ contact_data.name }}</span>
         </div>
-        <div class="user__status"></div>
+        <div 
+        class="user__status"
+        :class="className"
+        ></div>
    </div> 
 </template>
