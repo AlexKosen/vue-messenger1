@@ -109,17 +109,21 @@
 .start-chat {
   background: cornflowerblue;
   padding: $spacer $spacer*2;
+  border: none;
   border-radius: 4px;
   color: #ffffff;
   outline: transparent;
+  
 }
 
 .start-call {
   background: forestgreen;
   padding: $spacer $spacer*2;
+  border: none;
   border-radius: 4px;
   color: #ffffff;
   outline: transparent;
+  margin-right: 2px;
 }
 
 .v-user {
