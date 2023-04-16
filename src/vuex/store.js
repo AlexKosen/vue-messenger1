@@ -5,7 +5,9 @@ export const store = createStore ({
     state() {
         return { 
             contacts: [],
-            currentUserChat: {}
+            chats: [],
+            currentUserChat: {},
+            currentChat: {}
         }
     },
     getters: {},
@@ -13,13 +15,18 @@ export const store = createStore ({
         SET_CONTACTS_TO_STORE(state, contacts) {
             state.contacts = contacts
         },
+        SET_CHATS_TO_STORE(state, chats) {
+            state.chats = chats
+        },
         SET_USER_TO_HEAD(state, user) {
             if(user) {
                 state.currentUserChat = user
             } else {
                 state.currentUserChat = ''
-            }
-            
+            }   
+        },
+        SET_TO_CURRENT_CHAT(state, chat) {
+            state.currentChat = chat
         }
     },
     actions: {
@@ -29,8 +36,17 @@ export const store = createStore ({
                 commit('SET_CONTACTS_TO_STORE', contacts.data)
             })
         },
+        FETCH_CHATS({commit}) {
+            return axios.get('http://localhost:3000/chats')
+            .then((chats) => {
+                commit('SET_CHATS_TO_STORE', chats.data)
+            })
+        },
         SET_USER_TO_HEADER({commit}, user) {
             commit('SET_USER_TO_HEAD', user)
+        },
+        ADD_CURRENT_CHAT({commit}, chat) {
+            commit('SET_TO_CURRENT_CHAT', chat)
         }
     }
 })
