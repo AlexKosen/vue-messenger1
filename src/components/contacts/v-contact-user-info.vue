@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
     data() {
@@ -9,8 +9,38 @@ export default {
     },
     computed: {
         ...mapState([
-            'contacts'
+            'contacts',
+            'chats',
+            'currentChat'
         ])
+    },
+    methods: {
+        ...mapActions([
+        'FETCH_CHATS',
+        'ADD_CURRENT_CHAT'
+        ]),
+
+        checkChats() {
+            if(!this.chats.length) {
+                this.FETCH_CHATS()
+                .then(()=> {
+                    this.toChats()
+                })
+            } else {
+                this.toChats()
+            }
+        },
+        toChats() {
+            this.chats.map((chat)=> {
+                if(chat.id === this.contact_data.id) {
+                    this.$router.push({
+                        name: 'chat',
+                        query: { 'id': chat.id}
+                    })
+                }
+                this.ADD_CURRENT_CHAT(chat)
+            })
+        }
     },
     mounted() {
         this.contacts.find((contact) => {
@@ -31,7 +61,7 @@ export default {
             </div>
             <div class="info__tools">
                 <button class="start-call">Call</button>
-                <button class="start-chat">Start chat</button>
+                <button class="start-chat" @click="checkChats">Start chat</button>
             </div>
         </div>
     </div>

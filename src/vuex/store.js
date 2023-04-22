@@ -48,7 +48,7 @@ export const store = createStore({
     },
     SET_MESSAGE_TO_CHAT({ commit }, { userId, chat }) {
       return axios
-        .put("http://localhost:3000/chats" + userId, chat)
+        .put("http://localhost:3000/chats/" + userId, chat)
         .then((response) => {
           return response;
         });

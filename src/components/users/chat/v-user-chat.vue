@@ -11,26 +11,19 @@ export default {
             textValue: '',
         }
     },
-    props: {
-        // messages: {
-        //     type: Array,
-        //     default: () => []
-        // },
-        user: {
-          type: Object,
-          default: () => {}  
-        }
-    },
+
     computed: {
         ...mapState([
             'currentChat'
         ]),
-        ...mapActions([
-            'SET_MESSAGE_TO_CHAT'
-        ])
+
     },
 
     methods: {
+        ...mapActions([
+            'SET_MESSAGE_TO_CHAT'
+        ]),
+
         sendMessage() {
             let user = {...this.currentChat}
             let chat = {
@@ -44,8 +37,7 @@ export default {
                 type: 'own'
             }
             user.chat.push(chat)
-            console.log(user.id)
-            console.log(user)
+            console.log(chat)
             this.SET_MESSAGE_TO_CHAT({userId: user.id, chat: user})
             .then(()=> {
                 this.textValue = ''
