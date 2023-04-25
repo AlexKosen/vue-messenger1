@@ -6,6 +6,10 @@ export default {
     components: {
         vUser
     },
+    beforeRouteLeave (to, from, next) {
+        console.log('to:', to)
+        console.log('from:', from)
+    },
     computed: {
         ...mapState([
             'chats'
