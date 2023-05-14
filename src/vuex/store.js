@@ -4,7 +4,7 @@ import axios from "axios";
 export const store = createStore({
   state() {
     return {
-      isAuth: false,
+      isAuth: true,
       contacts: [],
       chats: [],
       currentUserChat: {},
